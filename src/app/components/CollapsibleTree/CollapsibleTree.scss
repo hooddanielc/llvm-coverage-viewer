@@ -1,0 +1,27 @@
+
+.tree_filename_title {
+  font-weight: normal;
+}
+
+.tree_section {
+  border: 1px solid #f00;
+  height: 1em;
+  overflow: hidden;
+
+  &.open {
+    height: auto;
+  }
+}
+
+.tree_title {
+  height: 1em;
+  line-height: 1em;
+  border: 1px solid #0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.tree_section_children {
+  margin-left: 1em;
+  border: 1px solid #00f;
+}

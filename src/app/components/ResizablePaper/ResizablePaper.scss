@@ -1,0 +1,25 @@
+.container > div {
+  margin-right: 14px;
+}
+
+.vertical_handlebar {
+  width: 14px;
+  height: 100%;
+  background: #404040;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  .vertical_grab {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+    background: #55f0f1;
+    border-radius: 4px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 50px;
+  }
+}

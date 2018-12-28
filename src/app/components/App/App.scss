@@ -1,0 +1,28 @@
+/* import fonts */
+@import '../../../../node_modules/typeface-roboto/index.css';
+@import '~../../../../node_modules/hack-font/build/web/hack.css';
+
+:global {
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .llvm-coverage-viewer-root {
+    width: 100%;
+    height: 100%;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.body {
+  font-family: Roboto;
+  width: 100%;
+  height: 100%;
+}

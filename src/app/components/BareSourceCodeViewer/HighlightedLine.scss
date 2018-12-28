@@ -1,0 +1,31 @@
+.line_container {
+  position: relative;
+}
+
+.highlight_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  color: transparent;
+}
+
+.not_covered {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+.is_covered {
+  visibility: hidden;
+}
+
+.is_excluded {
+  visibility: hidden;
+}

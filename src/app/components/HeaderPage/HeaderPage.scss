@@ -1,0 +1,21 @@
+.child_container {
+  height: calc(100vh - 46px);
+  width: 100%;
+  position: relative;
+}
+
+.search_container {
+  position: absolute !important;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  background: #eee;
+  height: calc(100% - 20px);
+  border-radius: 14px;
+  overflow: hidden;
+  z-index: 99999;
+}
+
+.header {
+  height: 3px;
+}

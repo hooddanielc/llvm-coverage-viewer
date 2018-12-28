@@ -1,0 +1,17 @@
+.summary {
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.summary > * {
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 14px;
+}
+
+.summary_container {
+  overflow: auto;
+  height: 100%;
+}

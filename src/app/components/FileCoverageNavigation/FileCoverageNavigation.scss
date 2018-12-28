@@ -1,0 +1,38 @@
+.navigation_container {
+  width: 300px;
+  float: left;
+  position: relative;
+  height: 100%;
+
+  & > * {
+    height: calc(100% - 20px);
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .navigation_wrapper {
+    height: 100%;
+  }
+}
+
+.file_content_container {
+  overflow: hidden;
+  height: 100%;
+  & > * {
+    overflow: hidden;
+    height: calc(100% - 20px);
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+}
+
+.file_content_wrapper {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.highlighted_coverage {
+  overflow: visible !important;
+}
