@@ -4,7 +4,7 @@
   "description": "Convert llvm coverage report json to single html file",
   "main": "index.js",
   "bin": {
-    "llvm-coverge-viewer": "./dist/llvm-coverage-viewer-cli.js"
+    "llvm-coverage-viewer": "./dist/llvm-coverage-viewer-cli.js"
   },
   "scripts": {
     "build": "webpack",
@@ -22,8 +22,8 @@
   ],
   "homepage": "https://github.com/hooddanielc/llvm-coverage-viewer",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/hooddanielc/llvm-coverage-viewer.git"
+    "type": "git",
+    "url": "https://github.com/hooddanielc/llvm-coverage-viewer.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -52,7 +52,6 @@
     "react-virtualized": "^9.21.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "tiny-worker": "^2.1.2",
     "url-loader": "^1.1.2",
     "virtual-dom": "^2.1.1",
     "webpack": "^4.25.1",
@@ -79,6 +78,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "tiny-worker": "^2.1.2",
     "typeface-roboto": "0.0.54",
     "vdom-to-html": "^2.3.1"
   }
