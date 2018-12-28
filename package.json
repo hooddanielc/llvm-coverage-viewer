@@ -1,6 +1,6 @@
 {
-  "name": "llvm-coverge-viewer",
-  "version": "1.0.0-alpha.1",
+  "name": "llvm-coverage-viewer",
+  "version": "1.0.0",
   "description": "Convert llvm coverage report json to single html file",
   "main": "index.js",
   "bin": {
