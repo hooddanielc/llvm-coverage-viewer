@@ -1,3 +1,4 @@
 node_modules
 dist
 test/fixtures/cpp_project/report.json
+npm-debug.log

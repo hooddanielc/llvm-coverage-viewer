@@ -5,12 +5,17 @@ const url = require('url');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-const useDebugServer = false;
+
+// When initially creating this project, I planned to release this tool
+// as an electron app, as well as a webapp. The development environment
+// uses the electron app.
+const useDebugServer = true;
 
 function createWindow () {
   win = new BrowserWindow({width: 800, height: 600});
 
   if (useDebugServer) {
+    console.log('loading url');
     win.loadURL('http://localhost:3000');
   } else {
     win.loadURL(url.format({

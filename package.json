@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack",
     "build-prod": "webpack --config webpack.prod.js",
-    "start": "node ./dist/dev-server.js",
+    "start": "npm run build && node ./dist/dev-server.js",
     "test": "NODE_PATH=src/shims/node mocha --require @babel/polyfill --require @babel/register 'test/**/*-test.js'",
     "testone": "NODE_PATH=src/shims/node mocha --require @babel/polyfill --require @babel/register"
   },

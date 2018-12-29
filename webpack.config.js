@@ -130,6 +130,7 @@ const CLI_CONFIG = {
   entry: {
     'dev-server.js': add_entry('./src/server/dev-server.js'),
     'server.js': add_entry('./src/server/server.js'),
+    'electron-app.js': add_entry('./src/electron/index.js'),
   },
 
   context: process.cwd(),
