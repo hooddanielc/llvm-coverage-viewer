@@ -14,6 +14,7 @@ const partial_coverage_src = fs.readFileSync(partial_coverage_file_path, 'utf8')
 
 describe('shims::WebWorker', () => {
   let report_json = null;
+  let worker = null;
 
   beforeEach(async () => {
     const result = await setup();
@@ -22,6 +23,10 @@ describe('shims::WebWorker', () => {
 
   afterEach(async () => {
     await teardown();
+    if (worker) {
+      worker.terminate();
+      worker = null;
+    }
   });
 
   it('exists', () => {
@@ -30,10 +35,9 @@ describe('shims::WebWorker', () => {
 
   it('pings and pongs', async () => {
     await new Promise((resolve, reject) => {
-      const worker = new Worker(highlight_worker_path);
+      worker = new Worker(highlight_worker_path);
       worker.addEventListener('message', (e) => {
         expect(e.data).to.eql({type: 'pong'});
-        worker.terminate();
         resolve();
       }, false);
       worker.postMessage({
@@ -44,7 +48,7 @@ describe('shims::WebWorker', () => {
 
   it('receives report json', async () => {
     await new Promise((resolve, reject) => {
-      const worker = new Worker(highlight_worker_path);
+      worker = new Worker(highlight_worker_path);
       let received_first = false;
       const half = Math.floor(report_json.length / 2);
       const first = report_json.substring(0, half);
@@ -68,7 +72,6 @@ describe('shims::WebWorker', () => {
           }
           case 'report_ok': {
             resolve();
-            worker.terminate();
             break;
           }
         }
@@ -91,12 +94,11 @@ describe('shims::WebWorker', () => {
 
   it('builds file', async () => {
     await new Promise((resolve, reject) => {
-      const worker = new Worker(highlight_worker_path);
+      worker = new Worker(highlight_worker_path);
 
       worker.addEventListener('message', (e) => {
         switch (e.data.type) {
           case 'error': {
-            worker.terminate();
             reject(e);
             break;
           }

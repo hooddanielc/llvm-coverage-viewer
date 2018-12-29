@@ -28,9 +28,10 @@ const watching = compiler.watch({}, (err, stats) => {
   }
 
   if (!electronChildProcess) {
-    const rootDir = path.resolve(__dirname, '..');
+    const root_dir = path.resolve(__dirname, '..');
+    const app = path.join(root_dir, 'dist', 'electron-app.js');
     const electronBin = path.resolve(__dirname, '..', 'node_modules', '.bin', 'electron');
-    electronChildProcess = spawn(electronBin, [rootDir, 'path/to/report.json'], {
+    electronChildProcess = spawn(electronBin, [app], {
       stdio: 'inherit',
       env: process.env,
       cwd: process.cwd(),
