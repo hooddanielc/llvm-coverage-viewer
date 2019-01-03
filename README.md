@@ -23,6 +23,10 @@ llvm-coverage-viewer
  * collapsible folder tree ui
  * uses react and material-ui
 
+## Limitations
+
+ * json report must be lesser than 256MB
+
 ## Install
 
 ```sh

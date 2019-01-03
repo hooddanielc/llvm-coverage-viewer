@@ -20,7 +20,15 @@ if (!fs.existsSync(program.json)) {
   throw new Error('report does not exist');
 }
 
-const report_json = JSON.parse(fs.readFileSync(program.json, 'utf8'));
+let report_json = null;
+
+try {
+  report_json = JSON.parse(fs.readFileSync(program.json, 'utf8'));
+} catch (e) {
+  console.log('Error: Unable to read JSON file');
+  throw e;
+}
+
 const report = new Report({report: report_json});
 
 render_static_report({
