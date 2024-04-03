@@ -1,6 +1,4 @@
-import path from 'path';
 import React from 'react';
-import dispatch from 'redux';
 import {connect} from 'react-redux'
 import {load} from '../actions/report';
 

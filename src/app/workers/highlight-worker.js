@@ -1,10 +1,8 @@
-//import {document} from 'llvm-coverage-viewer-dom';
 import virtual_dom from 'virtual-dom';
 import html_to_vdom from 'html-to-vdom';
 import hljs from 'highlight.js';
 import wrap_new_lines_in_spans from '../util/wrap-new-lines-in-spans';
 import {Report} from '../models';
-import vdom_to_html from 'vdom-to-html';
 
 const convert_html = html_to_vdom({
   VNode: virtual_dom.VNode,

@@ -1,9 +1,8 @@
 import React from 'react';
 import HeaderPage from '../HeaderPage/HeaderPage';
-import BareSourceCodeViewer from '../BareSourceCodeViewer/BareSourceCodeViewer';
 import CoverageSummary from '../CoverageSummary';
 import MetalPaper from '../MetalPaper/MetalPaper';
-import s from './Home.scss';
+import s from './Home.module.scss';
 
 export default class extends React.Component {
 

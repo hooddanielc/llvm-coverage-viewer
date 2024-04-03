@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import s from './MetalPaper.scss';
+import s from './MetalPaper.module.scss';
 
 class MetalPaper extends React.Component {
   render() {

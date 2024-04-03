@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import classnames from 'classnames';
 
-import '!style-loader!css-loader!highlight.js/styles/monokai.css';
-import s from './BareSourceCodeViewer.scss';
+import 'highlight.js/styles/monokai.css';
+import s from './BareSourceCodeViewer.module.scss';
 import HighlightedLine from './HighlightedLine';
 
 export default class BareSourceCodeViewer extends React.Component {

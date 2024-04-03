@@ -1,14 +1,14 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom'
+import withRouter from "../../util/with_router";
 import {connect} from 'react-redux'
 import Header from '../../containers/Header';
-import s from './HeaderPage.scss';
+import s from './HeaderPage.module.scss';
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import CodeIcon from '@material-ui/icons/Code';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import CodeIcon from '@mui/icons-material/Code';
 
 import {set_search_enabled} from '../../actions/search';
 

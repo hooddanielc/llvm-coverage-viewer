@@ -1,8 +1,8 @@
 import React from 'react';
 import MetalPaper from '../MetalPaper/MetalPaper';
 import classnames from 'classnames';
-import {ButtonBase} from '@material-ui/core';
-import s from './ResizablePaper.scss';
+import {ButtonBase} from '@mui/material';
+import s from './ResizablePaper.module.scss';
 export default class extends React.Component {
   static get defaultProps() {
     return {}
