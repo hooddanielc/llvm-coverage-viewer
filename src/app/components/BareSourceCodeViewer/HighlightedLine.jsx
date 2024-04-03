@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './HighlightedLine.scss';
+import s from './HighlightedLine.module.scss';
 
 export default class extends React.Component {
   componentDidMount() {

@@ -1,24 +1,18 @@
 import React from 'react';
-import HeaderPage from '../HeaderPage/HeaderPage';
-import FileCoverage from '../FileCoverage/FileCoverage';
-import MetalPaper from '../MetalPaper/MetalPaper';
-import ResizablePaper from '../ResizablePaper/ResizablePaper';
-import s from './CollapsibleTree.scss';
-import path from 'path';
-import {ButtonBase} from '@material-ui/core';
+import s from './CollapsibleTree.module.scss';
+import path from '../../util/path';
 import classnames from 'classnames';
-import {withRouter} from 'react-router-dom';
 
-import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import Collapse from '@material-ui/core/Collapse';
-import ChevronRight from '@material-ui/icons/ChevronRight';
-import CodeIcon from '@material-ui/icons/Code'
+import withRouter from "../../util/with_router";
+
+import { withStyles } from '@mui/styles';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Collapse from '@mui/material/Collapse';
+import ChevronRight from '@mui/icons-material/ChevronRight';
+import CodeIcon from '@mui/icons-material/Code'
 
 const styles = theme => ({
   root: {
@@ -243,7 +237,6 @@ class CollapsibleTree extends React.Component {
   }
 
   render() {
-    const start = new Date();
     const prefix = this.props.report.filename_prefix;
     const folder = prefix.trim() !== '' ? path.basename(prefix) : this.props.title;
     const filenames = this.props.report.short_filenames;

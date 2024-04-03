@@ -1,9 +1,7 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
-import HeaderPage from '../HeaderPage/HeaderPage';
+import withRouter from "../../util/with_router";
 import BareSourceCodeViewer from '../BareSourceCodeViewer/BareSourceCodeViewer';
-import CoverageSummary from '../CoverageSummary';
-import s from './FileCoverage.scss';
+import './FileCoverage.scss';
 import {render_code_coverage} from '../../actions/report';
 
 class FileCoverage extends React.Component {

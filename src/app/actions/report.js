@@ -1,10 +1,6 @@
 // load report
-import path from 'path';
+import path from '../util/path';
 import fs from '../util/fs';
-import vdom_to_html from 'vdom-to-html';
-import {VNode} from 'virtual-dom';
-import {dispatch} from 'redux';
-import {Report} from '../models';
 
 export const REPORT_LOAD_REQUEST = 'REPORT_LOAD_START';
 export const REPORT_LOAD_RESPONSE = 'REPORT_LOAD_RESPONSE';

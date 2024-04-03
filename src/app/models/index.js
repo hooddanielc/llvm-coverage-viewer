@@ -1,7 +1,6 @@
 import fs from '../util/fs';
 import PropTypes from 'prop-types';
 import ObjectHash from 'object-hash';
-import Worker from 'llvm-coverage-viewer-webworker';
 import IntervalTree from 'node-interval-tree';
 
 class LogInterceptor {

@@ -1,19 +1,15 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import {Link, withRouter} from 'react-router-dom'
-import render_static_report from '../../util/render-static-report';
+import { withStyles } from '@mui/styles';
+import Button from '@mui/material/Button';
+import withRouter from "../../util/with_router";
 import {set_search_enabled} from '../../actions/search';
 import MetalPaper from '../MetalPaper/MetalPaper';
-import s from './Header.scss';
+import s from './Header.module.scss';
 
 import classnames from 'classnames';
-import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import DirectionsIcon from '@material-ui/icons/Directions';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 
 import {search} from '../../actions/search';
 
