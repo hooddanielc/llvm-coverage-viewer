@@ -533,15 +533,12 @@ class Report extends Model {
       }
     });
     let common_prefix = sorted_filenames[0];
-    let new_prefix = '';
     sorted_filenames.slice(1).forEach((filename) => {
       for (let i = 0; i < Math.min(filename.length, common_prefix.length); ++i) {
         if (common_prefix.charAt(i) !== filename.charAt(i)) {
-          common_prefix = new_prefix;
-          new_prefix = '';
+          if (i == 0) return "";
+          common_prefix = filename.substring(0, i - 1);
           break;
-        } else {
-          new_prefix += filename.charAt(i);
         }
       }
     });
