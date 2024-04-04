@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Convert llvm coverage report json to single html file",
   "bin": {
-    "llvm-coverage-viewer": "./dist/cli/llvm-coverage-viewer-cli.mjs"
+    "llvm-coverage-viewer": "./dist/cli/llvm-coverage-viewer-cli.js"
   },
   "scripts": {
     "dev": "vite",
