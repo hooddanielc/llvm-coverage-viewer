@@ -1,5 +1,5 @@
 import process from 'process';
-import program from 'commander';
+import {program} from 'commander';
 import pkg from '../../package.json';
 import fs from 'fs';
 import path from 'path';
@@ -9,24 +9,27 @@ program
   .version(pkg.version)
   .option('-j, --json <file>', 'Convert llvm code coverage json to html')
   .option('-o, --output <file>', 'Path to save html report to')
-  .option('-d, --dir <dir>', 'dir profix')
-  .parse(process.argv);
+  .option('-d, --dir <dir>', 'dir profix');
+program.parse();
 
-if (!program.json || !program.output) {
+const options = program.opts();
+
+console.log(options)
+if (!options.json || !options.output) {
   throw new Error('--output and --json required');
 }
 
-if (!fs.existsSync(program.json)) {
+if (!fs.existsSync(options.json)) {
   throw new Error('report does not exist');
 }
 
 let report_json = null;
 let report_origin_json = null;
 const current_dir = path.resolve('.').replaceAll('\\', '/');
-const prefix_dir = path.resolve((program.dir || current_dir)).replaceAll('\\', '/');
+const prefix_dir = path.resolve((options.dir || current_dir)).replaceAll('\\', '/');
 
 try {
-  report_origin_json = fs.readFileSync(program.json, 'utf8');
+  report_origin_json = fs.readFileSync(options.json, 'utf8');
   report_json = JSON.parse(report_origin_json);
 } catch (e) {
   console.log('Error: Unable to read JSON file');
@@ -57,6 +60,6 @@ render_static_report({
     filenames: report_json.data[0].files.map(({filename}) => filename),
     report_json: JSON.stringify(report_json),
   },
-  output: program.output,
+  output: options.output,
   prefix_dir: prefix_dir,
 });

@@ -27,6 +27,7 @@ export default defineConfig({
             output: {
                 format: 'cjs',
                 entryFileNames: '[name].js',
+                banner: '#!/usr/bin/env node\n\n',
             },
         }
     }

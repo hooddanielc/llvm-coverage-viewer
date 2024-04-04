@@ -22,7 +22,7 @@ export default defineConfig({
   build: {
     outDir: "dist/app",
     minify: false,
-    sourcemap: true,
+    sourcemap: false,
     rollupOptions: {
       input: [
         'src/app/llvm-coverage-viewer.jsx',
