@@ -1,7 +1,7 @@
 import React from 'react';
-import withRouter from "../../util/with_router";
+import withRouter from "/@/app/util/with_router";
 import {connect} from 'react-redux'
-import Header from '../../containers/Header';
+import Header from '/@/app/containers/Header';
 import s from './HeaderPage.module.scss';
 
 import List from '@mui/material/List';
@@ -19,7 +19,7 @@ class HeaderPage extends React.Component {
       enabled: false,
       search_list: this.props.report.short_filenames
     }));
-    this.props.history.push(`/browse/${filename}`);
+    this.props.router.navigate(`/browse/${filename}`);
   }
 
   render_search_list() {

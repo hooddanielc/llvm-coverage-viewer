@@ -11,17 +11,21 @@ export const RENDER_COVERAGE_RESPONSE = 'RENDER_COVERAGE_RESPONSE';
 export const RENDER_COVERAGE_RESPONSE_CHUNK = 'RENDER_COVERAGE_RESPONSE_CHUNK';
 export const RENDER_COVERAGE_ERROR = 'RENDER_COVERAGE_ERROR';
 
-const get_report_worker_src = () => {
-  try {
-    const src = fs.readFileSync('%%___highlight_worker___%%.js');
-    return src;
-  } catch (e) {
-    return fs.readFileSync(path.resolve(__dirname, '..', '..', '..', 'dist', 'llvm-coverage-viewer-highlight-worker.js'));
+const get_report_worker_src = async() => {
+
+  const filenames = [
+    '%%___highlight_worker___%%.js',
+    'llvm-coverage-viewer-highlight-worker.js',
+  ];
+  for (const filename of filenames) {
+    const src = await fs.readFile(filename);
+    if (src) return src;
   }
+  return null
 }
 
-const get_report_worker = () => {
-  const src = get_report_worker_src();
+const get_report_worker = async () => {
+  const src = await get_report_worker_src();
   let blob = null;
   try {
     blob = new Blob([src], {type: 'application/javascript'});
@@ -32,6 +36,7 @@ const get_report_worker = () => {
     blob = blob.getBlob();
   }
   return new Worker(URL.createObjectURL(blob));
+  // return new Worker('dist/worker/llvm-coverage-viewer-highlight-worker.js');
 }
 
 export const load = ({filename}) => async (dispatch) => {
@@ -41,8 +46,8 @@ export const load = ({filename}) => async (dispatch) => {
   });
 
   try {
-    const worker = get_report_worker();
-    const report_json = fs.readFileSync(filename, 'utf8');
+    const worker = await get_report_worker();
+    const report_json = await fs.readFile(filename, 'utf8');
 
     return new Promise((resolve, reject) => {
       const worker_cb = (e) => {

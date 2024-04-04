@@ -22,7 +22,7 @@ const CustomTableCell = withStyles(theme => ({
   body: {
     fontSize: 14,
   },
-}))(TableCell);
+}), {})(TableCell);
 
 const styles = theme => ({
   root: {
@@ -119,7 +119,7 @@ const render_summary_row = ({summary, filename, key, onClick, classes}) => {
   return (
     <TableRow className={classes.row} hover={true} key={key} onClick={onClick}>
       {cols.map((col, i) =>  (
-        <CustomTableCell key={`coverage-row-${i}`} align={i === 0 ? null : 'right'}>{col}</CustomTableCell>
+        <CustomTableCell key={`coverage-row-${i}`} align={i === 0 ? 'left' : 'right'}>{col}</CustomTableCell>
       ))}
     </TableRow>
   );
@@ -177,4 +177,4 @@ CoverageSummary.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CoverageSummary);
+export default withStyles(styles, {})(CoverageSummary);

@@ -3,11 +3,12 @@ import HeaderPage from '../HeaderPage/HeaderPage';
 import CoverageSummary from '../CoverageSummary';
 import MetalPaper from '../MetalPaper/MetalPaper';
 import s from './Home.module.scss';
+import withRouter from "../../util/with_router";
 
-export default class extends React.Component {
+class Home extends React.Component {
 
   on_file_click(filename) {
-    this.props.history.push(`/browse/${filename}`)
+    this.props.router.navigate(`/browse/${filename}`)
   }
 
   render_summary() {
@@ -31,3 +32,5 @@ export default class extends React.Component {
     );
   }
 }
+
+export default withRouter(Home);

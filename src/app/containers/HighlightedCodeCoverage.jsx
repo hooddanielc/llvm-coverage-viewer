@@ -1,4 +1,4 @@
-import FileCoverage from '../components/FileCoverage/FileCoverage';
+import FileCoverage from '/@/app/components/FileCoverage/FileCoverage';
 import React from 'react';
 import {connect} from 'react-redux'
 
