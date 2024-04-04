@@ -19,7 +19,7 @@ class HeaderPage extends React.Component {
       enabled: false,
       search_list: this.props.report.short_filenames
     }));
-    this.props.router.navigate(`/browse/${filename}`);
+    this.props.router.navigate(`/browse/${encodeURIComponent(filename)}`);
   }
 
   render_search_list() {
