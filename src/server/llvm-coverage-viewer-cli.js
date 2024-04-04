@@ -13,8 +13,6 @@ program
 program.parse();
 
 const options = program.opts();
-
-console.log(options)
 if (!options.json || !options.output) {
   throw new Error('--output and --json required');
 }
