@@ -1,15 +1,15 @@
-import process from 'process';
 import {program} from 'commander';
 import pkg from '../../package.json';
 import fs from 'fs';
 import path from 'path';
-import render_static_report from '/@/app/util/render-static-report';
+import render_static_report from './render-static-report';
 
 program
   .version(pkg.version)
   .option('-j, --json <file>', 'Convert llvm code coverage json to html')
-  .option('-o, --output <file>', 'Path to save html report to')
-  .option('-d, --dir <dir>', 'dir profix');
+  .option('-o, --output <file>', 'Path to save html report to (debug mode is dir)')
+  .option('-d, --dir <dir>', 'dir profix')
+  .option('-g, --debug', 'debug mode', false)
 program.parse();
 
 const options = program.opts();
@@ -46,6 +46,9 @@ function normalize_filename(filename) {
 for (const data of report_json.data) {
   for (const file of data.files) {
     file.filename = normalize_filename(file.filename);
+    for (const expansion of file.expansions) {
+      expansion.filenames = expansion.filenames.map(normalize_filename);
+    }
   }
   for (const fun of data.functions) {
     fun.filenames = fun.filenames.map(normalize_filename);
@@ -60,4 +63,5 @@ render_static_report({
   },
   output: options.output,
   prefix_dir: prefix_dir,
+  debug: options.debug || false,
 });

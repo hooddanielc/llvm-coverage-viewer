@@ -1,6 +1,6 @@
 {
   "name": "@zeromake/llvm-coverage-viewer",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Convert llvm coverage report json to single html file",
   "bin": {
     "llvm-coverage-viewer": "./dist/cli/llvm-coverage-viewer-cli.js"
@@ -33,13 +33,13 @@
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
+    "@zeromake/html-to-vdom": "^0.9.1",
     "atob": "^2.1.2",
     "browser-sync": "^3.0.2",
     "classnames": "^2.5.1",
     "connect-history-api-fallback": "^1.5.0",
     "hack-font": "^3.3.0",
     "highlight.js": "^11.9.0",
-    "html-to-vdom": "^0.7.0",
     "mui-styles": "^2.0.4",
     "node-interval-tree": "^2.1.2",
     "object-hash": "^3.0.0",

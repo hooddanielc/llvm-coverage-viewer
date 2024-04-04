@@ -16,9 +16,7 @@ export default defineConfig({
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
       'path': empty,
       'fs': empty,
-      'punycode': empty,
-      'buffer': empty,
-      'events': empty,
+      'html-to-vdom': '@zeromake/html-to-vdom',
     },
   },
   build: {

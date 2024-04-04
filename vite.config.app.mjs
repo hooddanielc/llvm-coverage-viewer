@@ -15,8 +15,8 @@ export default defineConfig({
     alias: {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
       'path': empty,
-      '@mui/styles': 'mui-styles',
       'fs': empty,
+      '@mui/styles': 'mui-styles',
     },
   },
   build: {
