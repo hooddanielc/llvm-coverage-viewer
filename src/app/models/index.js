@@ -432,15 +432,17 @@ class File extends Model {
     this.tree = new IntervalTree();
     this.regions.forEach((region) => {
       const {line_start, column_start, line_end, column_end} = region;
-      const start_index = this.line_info[line_start].start + column_start;
-      const end_index = this.line_info[line_end].start + column_end;
+      if (line_start < this.line_info.length && line_end < this.line_info.length) {
+        const start_index = this.line_info[line_start].start + column_start;
+        const end_index = this.line_info[line_end].start + column_end;
 
-      const interval = new Interval({
-        region,
-        from: start_index,
-        to: end_index,
-      });
-      this.tree.insert(start_index, end_index, interval);
+        const interval = new Interval({
+          region,
+          from: start_index,
+          to: end_index,
+        });
+        this.tree.insert(start_index, end_index, interval);
+      }
     });
     return this.tree;
   }
@@ -512,6 +514,9 @@ class Report extends Model {
     const report = props.report.data[0];
     for (const file of report.files) {
       file.filename = file.filename.replaceAll('\\', '/');
+      for (const expansion of file.expansions) {
+        expansion.filenames = expansion.filenames.map((filename) => filename.replaceAll('\\', '/'));
+      }
     }
     for (const fun of report.functions) {
       fun.filenames = fun.filenames.map((filename) => filename.replaceAll('\\', '/'));
@@ -539,15 +544,17 @@ class Report extends Model {
       }
     });
     let common_prefix = sorted_filenames[0];
-    sorted_filenames.slice(1).forEach((filename) => {
-      for (let i = 0; i < Math.min(filename.length, common_prefix.length); ++i) {
-        if (common_prefix.charAt(i) !== filename.charAt(i)) {
-          if (i == 0) return "";
-          common_prefix = filename.substring(0, i);
+    const other_sorted_filenames = sorted_filenames.slice(1);
+    for (const other_sorted_filename of other_sorted_filenames) {
+      for (let i = 0; i < Math.min(other_sorted_filename.length, common_prefix.length); ++i) {
+        if (common_prefix.charAt(i) !== other_sorted_filename.charAt(i)) {
+          if (i == 0) common_prefix = "";
+          else common_prefix = other_sorted_filename.substring(0, i);
           break;
         }
       }
-    });
+      if (common_prefix === "") break;
+    }
     return common_prefix;
   }
 

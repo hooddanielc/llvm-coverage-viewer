@@ -12,10 +12,8 @@ export const RENDER_COVERAGE_RESPONSE_CHUNK = 'RENDER_COVERAGE_RESPONSE_CHUNK';
 export const RENDER_COVERAGE_ERROR = 'RENDER_COVERAGE_ERROR';
 
 const get_report_worker_src = async() => {
-
   const filenames = [
     '%%___highlight_worker___%%.js',
-    'llvm-coverage-viewer-highlight-worker.js',
   ];
   for (const filename of filenames) {
     const src = await fs.readFile(filename);
@@ -26,6 +24,8 @@ const get_report_worker_src = async() => {
 
 const get_report_worker = async () => {
   const src = await get_report_worker_src();
+  // debug mode worker use url import
+  if (src === null) return new Worker('llvm-coverage-viewer-highlight-worker.js');
   let blob = null;
   try {
     blob = new Blob([src], {type: 'application/javascript'});
@@ -36,7 +36,6 @@ const get_report_worker = async () => {
     blob = blob.getBlob();
   }
   return new Worker(URL.createObjectURL(blob));
-  // return new Worker('dist/worker/llvm-coverage-viewer-highlight-worker.js');
 }
 
 export const load = ({filename}) => async (dispatch) => {
@@ -112,7 +111,7 @@ export const render_code_coverage = ({filename, report, worker}) => async (dispa
 
   try {
     const prefix = report.filename_prefix;
-    const file_src = fs.readFileSync(filename, 'utf8');
+    const file_src = await fs.readFile(filename, 'utf8');
     const rendered_lines = [];
 
     return new Promise((resolve, reject) => {

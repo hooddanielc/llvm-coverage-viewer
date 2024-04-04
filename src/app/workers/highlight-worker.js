@@ -37,6 +37,9 @@ export const on_report_json = ({self, e}) => {
 export const on_send_complete = ({self, e}) => {
   state.report_json = JSON.parse(state.raw_json);
   state.report = new Report({report: state.report_json});
+  // console.log('filenames', state.report.get_filenames());
+  // console.log('short_filenames', state.report.get_short_filenames());
+  // console.log('filename_prefix', state.report.get_filename_prefix());
   self.postMessage({
     type: 'report_ok',
     payload: {
@@ -98,7 +101,7 @@ export const on_get_highlight_html = ({self, e}) => {
   }
 
   try {
-    const {value} = hljs.highlight(language, file.str);
+    const {value} = hljs.highlight(file.str, {language: language});
     const vtree = convert_html(value);
     const vtree_as_array = vtree.length ? vtree : [vtree];
     const result = wrap_new_lines_in_spans(vtree_as_array);
