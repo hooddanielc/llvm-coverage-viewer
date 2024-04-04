@@ -8,7 +8,7 @@ import withRouter from "../../util/with_router";
 class Home extends React.Component {
 
   on_file_click(filename) {
-    this.props.router.navigate(`/browse/${filename}`)
+    this.props.router.navigate(`/browse/${encodeURIComponent(filename)}`)
   }
 
   render_summary() {
