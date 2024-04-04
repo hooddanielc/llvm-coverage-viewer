@@ -22,14 +22,16 @@ export default class FileCoverageNavigation extends React.Component {
   }
 
   render() {
+    let { filename } = this.props.router.params;
+    filename = decodeURIComponent(filename);
     return (
       <HeaderPage report={this.props.report}>
         <ResizablePaper className={s.navigation_container}>
-          <CollapsibleTree path={this.props.match.params[0]} report={this.props.report} />
+          <CollapsibleTree path={filename} report={this.props.report} />
         </ResizablePaper>
         <MetalPaper className={s.file_content_container}>
           <div className={classnames(s.file_content_wrapper, 'hljs')}>
-            <HighlightedCodeCoverage path={this.props.match.params[0]} className={s.highlighted_coverage} />
+            <HighlightedCodeCoverage path={filename} className={s.highlighted_coverage} />
           </div>
         </MetalPaper>
       </HeaderPage>

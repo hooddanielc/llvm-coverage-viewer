@@ -2,8 +2,9 @@ import React from 'react';
 import s from './CollapsibleTree.module.scss';
 import path from '../../util/path';
 import classnames from 'classnames';
+// import history from '/@/app/util/history';
 
-import withRouter from "../../util/with_router";
+import withRouter from "/@/app/util/with_router";
 
 import { withStyles } from '@mui/styles';
 import List from '@mui/material/List';
@@ -81,13 +82,13 @@ class CollapsibleTree extends React.Component {
   static get defaultProps() {
     return {
       title: 'Report Title',
-      ListItemComponent: withStyles(list_item_styles)(ListItem),
-      ListComponent: withStyles(list_styles)(List),
-      ListItemIconComponent: withStyles(list_item_icon_styles)(ListItemIcon),
-      FolderIconComponent: withStyles(icon_styles)(ChevronRight),
-      FileIconComponent: withStyles(file_icon_styles)(CodeIcon),
-      CollapseComponent: withStyles(collapse_styles)(Collapse),
-      ListItemTextComponent: withStyles(list_item_text_styles)(ListItemText),
+      ListItemComponent: withStyles(list_item_styles, {})(ListItem),
+      ListComponent: withStyles(list_styles, {})(List),
+      ListItemIconComponent: withStyles(list_item_icon_styles, {})(ListItemIcon),
+      FolderIconComponent: withStyles(icon_styles, {})(ChevronRight),
+      FileIconComponent: withStyles(file_icon_styles, {})(CodeIcon),
+      CollapseComponent: withStyles(collapse_styles, {})(Collapse),
+      ListItemTextComponent: withStyles(list_item_text_styles, {})(ListItemText),
     }
   }
 
@@ -174,7 +175,7 @@ class CollapsibleTree extends React.Component {
   }
 
   on_click_filename(tree) {
-    this.props.history.push(`/browse/${tree.path}`);
+    this.props.router.navigate(`/browse/${encodeURIComponent(tree.path)}`);
   }
 
   render_folder_button({tree, depth, open}) {
@@ -255,4 +256,4 @@ class CollapsibleTree extends React.Component {
   }
 }
 
-export default withRouter(withStyles(styles)(CollapsibleTree));
+export default withRouter(withStyles(styles, {})(CollapsibleTree));

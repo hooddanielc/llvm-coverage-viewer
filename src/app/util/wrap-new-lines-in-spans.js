@@ -1,5 +1,5 @@
-import {VText, VNode} from 'virtual-dom';
 import vdom_to_html from 'vdom-to-html';
+import { VNode, VText } from 'virtual-dom';
 
 const copy_node = (node, state) => {
   if (node.text) {

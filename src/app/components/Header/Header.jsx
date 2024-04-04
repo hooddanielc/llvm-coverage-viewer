@@ -41,9 +41,9 @@ class Header extends React.Component {
   static get defaultProps() {
     return {
       title: 'LLVM Coverage Viewer',
-      SearchIconButtonComponent: withStyles(search_icon_button_styles)(IconButton),
-      SearchIconComponent: withStyles(search_icon_styles)(SearchIcon),
-      InputBaseComponent: withStyles(input_base_styles)(InputBase),
+      SearchIconButtonComponent: withStyles(search_icon_button_styles, {})(IconButton),
+      SearchIconComponent: withStyles(search_icon_styles, {})(SearchIcon),
+      InputBaseComponent: withStyles(input_base_styles, {})(InputBase),
     }
   }
 
@@ -115,7 +115,7 @@ class Header extends React.Component {
   render() {
     return (
       <MetalPaper className={s.header}>
-        <Button className={s.button} onClick={() => this.props.history.push('/')}>
+        <Button className={s.button} onClick={() => this.props.router.navigate('/')}>
           {this.props.title}
         </Button>
         {this.render_search()}

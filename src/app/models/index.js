@@ -1,4 +1,4 @@
-import fs from '../util/fs';
+import fs from '/@/app/util/fs';
 import PropTypes from 'prop-types';
 import ObjectHash from 'object-hash';
 import IntervalTree from 'node-interval-tree';
@@ -509,8 +509,15 @@ class Report extends Model {
 
   constructor(props) {
     super(props);
-    this.report = props.report.data[0];
-    this.report_json = JSON.stringify(props.report);
+    const report = props.report.data[0];
+    for (const file of report.files) {
+      file.filename = file.filename.replaceAll('\\', '/');
+    }
+    for (const fun of report.functions) {
+      fun.filenames = fun.filenames.map((filename) => filename.replaceAll('\\', '/'));
+    }
+    this.report = report;
+    // this.report_json = JSON.stringify(props.report);
   }
 
   get_summary() {
@@ -536,7 +543,7 @@ class Report extends Model {
       for (let i = 0; i < Math.min(filename.length, common_prefix.length); ++i) {
         if (common_prefix.charAt(i) !== filename.charAt(i)) {
           if (i == 0) return "";
-          common_prefix = filename.substring(0, i - 1);
+          common_prefix = filename.substring(0, i);
           break;
         }
       }

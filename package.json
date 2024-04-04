@@ -1,50 +1,46 @@
 {
-  "name": "llvm-coverage-viewer",
-  "version": "1.0.2",
+  "name": "@zeromake/llvm-coverage-viewer",
+  "version": "1.0.3",
   "description": "Convert llvm coverage report json to single html file",
-  "main": "index.js",
   "bin": {
-    "llvm-coverage-viewer": "./dist/llvm-coverage-viewer-cli.js"
+    "llvm-coverage-viewer": "./dist/cli/llvm-coverage-viewer-cli.mjs"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build-cli && npm run build-worker && npm run build-app",
+    "build-cli": "vite build -c vite.config.cli.mjs",
+    "build-worker": "vite build -c vite.config.worker.mjs",
+    "build-app": "vite build -c vite.config.app.mjs",
     "preview": "vite preview"
   },
-  "author": "Daniel Hood <hood.danielc@gmail.com>",
+  "author": "zeromake <a390720046@gmail.com>",
   "license": "MIT",
   "files": [
     "dist/*",
     "README.md",
     "files"
   ],
-  "homepage": "https://github.com/hooddanielc/llvm-coverage-viewer",
+  "homepage": "https://github.com/zeromake/llvm-coverage-viewer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hooddanielc/llvm-coverage-viewer.git"
+    "url": "https://github.com/zeromake/llvm-coverage-viewer.git"
   },
   "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^4.2.1",
-    "browser-sync": "^3.0.2",
-    "connect-history-api-fallback": "^1.5.0",
-    "sass": "^1.72.0",
-    "vite": "^5.2.0"
-  },
-  "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
-    "@mui/styles": "^5.15.14",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
     "atob": "^2.1.2",
-    "btoa": "^1.2.1",
+    "browser-sync": "^3.0.2",
     "classnames": "^2.5.1",
-    "commander": "^12.0.0",
+    "connect-history-api-fallback": "^1.5.0",
     "hack-font": "^3.3.0",
     "highlight.js": "^11.9.0",
     "html-to-vdom": "^0.7.0",
+    "mui-styles": "^2.0.4",
     "node-interval-tree": "^2.1.2",
     "object-hash": "^3.0.0",
     "prop-types": "^15.8.1",
@@ -55,8 +51,15 @@
     "react-router-dom": "^6.22.3",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
+    "sass": "^1.72.0",
     "tiny-worker": "^2.3.0",
     "typeface-roboto": "1.1.13",
-    "vdom-to-html": "^2.3.1"
+    "vdom-to-html": "^2.3.1",
+    "vite": "^5.2.0",
+    "vite-plugin-css-injected-by-js": "^3.5.0"
+  },
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "commander": "^12.0.0"
   }
 }
