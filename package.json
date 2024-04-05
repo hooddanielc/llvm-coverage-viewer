@@ -1,6 +1,6 @@
 {
   "name": "@zeromake/llvm-coverage-viewer",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Convert llvm coverage report json to single html file",
   "bin": {
     "llvm-coverage-viewer": "./dist/cli/llvm-coverage-viewer-cli.js"

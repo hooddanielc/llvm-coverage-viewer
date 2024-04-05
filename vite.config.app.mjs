@@ -9,6 +9,7 @@ const empty = join(PACKAGE_ROOT, 'src/app/util/empty.js');
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '',
   plugins: [react()],
   mode: 'development',
   resolve: {
