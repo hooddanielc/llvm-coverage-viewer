@@ -430,9 +430,10 @@ class File extends Model {
 
   initialize_interval_tree() {
     this.tree = new IntervalTree();
+    const hasOwnProperty = Object.prototype.hasOwnProperty;
     this.regions.forEach((region) => {
       const {line_start, column_start, line_end, column_end} = region;
-      if (line_start < this.line_info.length && line_end < this.line_info.length) {
+      if (hasOwnProperty.call(this.line_info, line_start) && hasOwnProperty.call(this.line_info, line_end)) {
         const start_index = this.line_info[line_start].start + column_start;
         const end_index = this.line_info[line_end].start + column_end;
 
