@@ -8,6 +8,14 @@ const render_localfs_script_tag = (path, content, replace=true) => `
   }\n</script>
 `;
 
+async function fsExist(p) {
+  try {
+    await fsPromises.access(p);
+  } catch(e) {
+    return false;
+  }
+}
+
 export default async ({report, output, use_dist, prefix_dir, debug}) => {
   const dist = use_dist;
   const filenames = report.filenames;
@@ -32,12 +40,22 @@ export default async ({report, output, use_dist, prefix_dir, debug}) => {
     );
     headers.push(`<link rel="stylesheet" href="assets/llvm-coverage-viewer.css"></link>`);
     footers.push(`<script type="text/javascript" src="llvm-coverage-viewer-browser.js"></script>`);
-    for (const filename of filenames) {
-      const filepath = path.isAbsolute(filename) ? filename : path.join(prefix_dir, filename);
-      await fsPromises.cp(
-        filepath,
-        path.join(output, filename),
-      );
+    if (debug === "2") {
+      for (const filename of filenames) {
+        const filepath = path.isAbsolute(filename) ? filename : path.join(prefix_dir, filename);
+        const outpath = path.join(output, filename);
+        const outdir = path.dirname(outpath);
+        if (!(await fsExist(outdir))) {
+          await fsPromises.mkdir(outdir, {recursive:true});
+        }
+        await fsPromises.symlink(filepath, outpath);
+      }
+    } else {
+      for (const filename of filenames) {
+        const filepath = path.isAbsolute(filename) ? filename : path.join(prefix_dir, filename);
+        const content = await fsPromises.readFile(filepath, 'utf8');
+        local_fs_tags.push(render_localfs_script_tag(filename, content));
+      }
     }
     output_html = path.join(output, 'index.html');
   } else {

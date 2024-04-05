@@ -15,9 +15,14 @@ const readFile = async (filepath, encoding) => {
   if (typeof fetch !== 'undefined') {
     const src = readFileSync(filepath, encoding);
     if (src) return src;
-    const resp = await fetch(filepath);
-    if (resp.status !== 200) return null;
-    return resp.text();
+    try {
+      const resp = await fetch(filepath);
+      if (resp.status !== 200) return null;
+      return resp.text();
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
   } else {
     return fs.readFileSync(filepath, encoding)
   }

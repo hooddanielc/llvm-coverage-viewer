@@ -9,7 +9,7 @@ program
   .option('-j, --json <file>', 'Convert llvm code coverage json to html')
   .option('-o, --output <file>', 'Path to save html report to (debug mode is dir)')
   .option('-d, --dir <dir>', 'dir profix')
-  .option('-g, --debug', 'debug mode', false)
+  .option('-g, --debug <mode>', 'debug mode', 0)
 program.parse();
 
 const options = program.opts();
