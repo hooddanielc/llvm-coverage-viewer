@@ -1,5 +1,7 @@
-llvm-coverage-viewer
-====================
+DEPRECATED! Please install @zeromake/llvm-coverage-viewer
+=========================================================
+
+# New Repository -> https://github.com/zeromake/llvm-coverage-viewer
 
 > I thought my tests covered that!
 
